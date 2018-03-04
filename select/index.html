@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="./css/selectTool.css"/>
+	</head>
+	<body>
+		<div id='m-select-demo-container'>
+		</div>
+		<!-- <div class="m-multiple-select-container">
+			<div class="m-select-button-container">
+				<span class="u-select-button u-active-select">选择省</span>
+				<span class="u-select-button">选择市</span>
+				<span class="u-select-button">选择区</span>
+				<span class="u-select-button">选择通道</span>
+				<input type="text" name="" id="u-select-show" >
+			</div>
+			<div class="m-select-options-container" >
+				<div class="m-select-options-wrap">
+					<ul class="m-select-options-inner">
+						<li class="m-select-options-item" cityCode="1" cityName="河北省">河北省</li>
+					</ul>
+				</div>
+			</div>
+		</div> -->
+		<script src="./js/jquery-3.2.1.min.js"></script>
+		<script src="./js/data.js"></script>
+		<script src="./js/selectTool.js"></script>
+		<script>
+			var dataList = Data.sourceList
+			dataList = getCreatDataList(0, 3, 3, 20)
+			function getCreatDataList (pid, newLevel, level, number) {
+				var arr = []
+				level = level || 3
+				number = number || 20
+				newLevel = newLevel || 3
+				newLevel --
+			for (let index = 0; index < number; index++) {
+				let id = 'id' + new Date().getTime() + Math.round(Math.random() * 10000)
+				arr.push({
+					pid: pid,
+					id: id,
+					name: level - newLevel + '级菜单' + (index + 1)
+				})
+				if (newLevel > 0) {
+					arr = arr.concat(getCreatDataList(id, newLevel, level, number))
+				}
+			}
+			return arr
+			}
+			var selectTools = new SelectTool('#m-select-demo-container', {
+				data: dataList
+			})
+			// $(window).ready(function () {
+			// 	// 点击按钮 选择对应的级别
+			// 	// 点击option项 给对应级别选择对应项
+			// 	var selectLevel = 0
+			// 	var selectVal = ''
+			// 	var selectValArr = []
+			// 	$('.m-select-button-container').on('click', function () {
+			// 		$('.m-select-options-container').show()
+			// 		return false
+			// 	})
+			// 	$('.u-select-button').on('click', function() {
+			// 		selectLevel = $(this).index()
+			// 		// $('.m-select-options-container').show()
+			// 	})
+			// 	$('.m-select-options-item').on('click', function () {
+			// 		var selectItem = {
+			// 			cityCode: $(this).attr('cityCode'),
+			// 			cityName: $(this).attr('cityName')
+			// 		}
+			// 		getSelectVal(selectLevel, selectItem)
+			// 		return false
+			// 	})
+			// 	$(window).on('click', function () {
+			// 		$('.m-select-options-container').hide()
+			// 	})
+			// 	$('.m-select-options-item').on('click', function () {
+			// 	})
+			// 	function getOptionsList (selectKey) {
+			// 	}
+			// 	function getSelectVal (selectLevel, selectItem) {
+			// 		selectValArr = selectValArr.splice(0, selectLevel)
+			// 		selectValArr.push(selectItem)
+			// 		var str = ''
+			// 		for (let index = 0; index < selectValArr.length; index++) {
+			// 			str += selectValArr[index].cityName
+			// 		}
+			// 		selectVal = str
+			// 		$('#u-select-show').val(selectVal)
+			// 	}
+			// })
+		</script>
+	</body>
+</html>

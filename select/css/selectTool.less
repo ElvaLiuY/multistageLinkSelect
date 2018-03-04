@@ -1,0 +1,54 @@
+.m-multiple-select-container{
+    width:300px;
+    // display: inline-block;
+    font-size: 16px;
+    position: relative;
+}
+.m-select-button-container{
+    width:100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+//  font-size: 16px;
+    line-height: 1.8em;
+    border: 1px solid #ccc;
+    border-radius: 1em;
+    .u-select-button{
+        display: inline-block;
+        line-height: 1.6em;
+        padding: 0px 10px;
+        border-radius: 2px;
+        line-height: ;
+        cursor:pointer;
+        &:hover{
+            background-color: rgb(120, 148, 212);
+            color:#fff;
+        }
+    }
+}
+.m-select-options-container{
+    position: absolute;
+    top:100%;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    border:1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    overflow-y: auto;
+    display: none;
+    ul,li{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .m-select-options-item{
+        line-height: 1.8em;
+        padding: 0 10px;
+        box-sizing: border-box;
+        cursor:pointer;
+        &:hover{
+            background-color: rgb(120, 148, 212);
+            color:#fff;
+        }
+    }
+}
